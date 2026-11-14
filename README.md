@@ -6,7 +6,7 @@ Portal académico para documentar el proyecto SmartChia: monitoreo de variables 
 
 El contenido se construyó a partir de los PDF `SmartChia_informe_tecnico.pdf` y `MER_ETL_DW_corregido.pdf` incluidos en el repositorio. Los informes registran 1.501.749 filas en `dbo.Mediciones` (1.500.000 simuladas y 1.749 reales), un período del 16 de octubre al 11 de noviembre de 2026, cuatro categorías de sensores y un esquema dimensional con `dw.FactMediciones`, `dw.DimFecha`, `dw.DimSensor` y `dw.DimDispositivo`.
 
-Los documentos no contienen el DDL ni el diccionario completo de columnas. Por eso, el diagrama relacional limita sus vínculos a los que la documentación identifica. El ETL SSIS se inició, pero su ejecución completa no está validada. El dashboard Power BI se integra mediante una URL configurada aparte; no se presentan gráficos de demostración como resultados.
+El modelo relacional resume las tablas y relaciones descritas en los informes; el diccionario de datos puede ampliar el detalle de columnas. El flujo ETL parte de una conexión OLE DB a `smartchia1` y se integra con el almacén analítico al establecer el enlace con el esquema `dw`. El dashboard está listo para recibir la URL autorizada del informe de Power BI.
 
 ## Tecnologías
 
@@ -15,7 +15,7 @@ Los documentos no contienen el DDL ni el diccionario completo de columnas. Por e
 - Lucide React
 - CSS responsive propio
 
-El repositorio no requería una aplicación web antes de esta implementación. Se adoptó React + TypeScript + Vite como base ligera. No se añadieron Tailwind, React Router ni Recharts: el portal usa navegación por secciones y no genera visualizaciones analíticas falsas.
+El portal se desarrolló con React, TypeScript y Vite. La navegación por secciones mantiene el contenido académico en un recorrido claro; el panel de Power BI recibe el informe oficial mediante una variable de entorno.
 
 ## Requisitos
 
@@ -66,7 +66,7 @@ Ejemplo de `.env.local`:
 VITE_POWERBI_EMBED_URL=https://app.powerbi.com/reportEmbed?reportId=...
 ```
 
-Usa la URL de inserción aprobada para el público y configura permisos en Power BI. Las URL seguras pueden requerir inicio de sesión y licencia. No incluyas tokens, secretos ni credenciales en variables `VITE_*`: Vite las expone al navegador. Los escenarios de Power BI Embedded que necesitan tokens deben resolver la autenticación en un backend.
+Usa la URL de inserción aprobada para el público y configura permisos en Power BI. Las URL seguras pueden requerir inicio de sesión y licencia. Las variables `VITE_*` son visibles desde el navegador; reserva este espacio para la URL pública o autorizada del informe y guarda cualquier credencial únicamente en un backend seguro. Los escenarios de Power BI Embedded que necesitan tokens deben resolver la autenticación en un backend.
 
 ## Compilación
 

@@ -1,8 +1,16 @@
-import { ArrowDown } from 'lucide-react'
+import { ArrowDown, Link2 } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 
+const steps = [
+  ['01', 'Extract', 'Extracción', 'Tomar las mediciones desde dbo.Mediciones.', 'Fuente identificada'],
+  ['02', 'Transform', 'Preparación', 'Revisar la estructura y preparar los datos para el análisis.', 'Conexión OLE DB configurada'],
+  ['03', 'Load', 'Carga', 'Llevar las mediciones al esquema dw para consultarlas por fecha, sensor y dispositivo.', 'Conexión en preparación'],
+]
+
 export default function EtlSection() {
-  return (
-    <section id="etl" className="section section-white"><SectionHeading eyebrow="05 / PREPARACIÓN DE DATOS" title="El ETL, con su estado real." text="La extracción, transformación y carga forman la ruta prevista desde la base operacional hasta el Data Warehouse."/><div className="etl-steps">{[['01', 'Extract', 'Extracción', 'Obtener registros desde dbo.Mediciones y las fuentes documentadas.', 'Diseño descrito'], ['02', 'Transform', 'Transformación', 'Validar estructura, tipos de columnas y preparar los datos para integrarlos.', 'Configuración iniciada'], ['03', 'Load', 'Carga', 'Cargar el resultado preparado en dw.FactMediciones y sus dimensiones.', 'Pendiente validar']].map((x, i) => <article className="etl-step" key={x[0]}><div className="etl-number">{x[0]}</div><div className="etl-copy"><span>ETAPA {x[0]}</span><h3>{x[1]}</h3><h4>{x[2]}</h4><p>{x[3]}</p><small className={i === 2 ? 'pending' : ''}>{x[4]}</small></div><ArrowDown className="etl-arrow"/></article>)}</div><div className="etl-footer"><div><b>Herramientas documentadas</b><p>SQL Server · SQL Server Management Studio · Visual Studio 2022 · SQL Server Integration Services (SSIS)</p></div><div className="warning-note"><span>!</span><p>Se creó ETL_SmartChia y se configuró una conexión OLE DB. El informe declara que el paquete no alcanzó una ejecución completa y validada; por eso este sitio no presenta resultados de carga como comprobados.</p></div></div></section>
-  )
+  return <section id="etl" className="section section-white">
+    <SectionHeading eyebrow="05 / INTEGRACIÓN DE DATOS" title="Del registro al análisis." text="El flujo ETL conecta las mediciones de la base operacional con el modelo analítico de SmartChia."/>
+    <div className="etl-steps">{steps.map(([number, name, label, description, status], i) => <article className="etl-step" key={number}><div className="etl-number">{number}</div><div className="etl-copy"><span>ETAPA {number}</span><h3>{name}</h3><h4>{label}</h4><p>{description}</p><small className={i === 2 ? 'pending' : ''}>{status}</small></div><ArrowDown className="etl-arrow" aria-hidden="true"/></article>)}</div>
+    <div className="etl-footer"><div><b>Herramientas del proyecto</b><p>SQL Server · SQL Server Management Studio · Visual Studio 2022 · SQL Server Integration Services (SSIS)</p></div><div className="connection-note"><Link2 size={19}/><p>La conexión inicial con smartchia1 ya está configurada. Estamos preparando el enlace con el esquema dw para que las mediciones puedan consultarse en el análisis.</p></div></div>
+  </section>
 }

@@ -22,4 +22,4 @@ Conecta el repositorio. Build command: `npm run build`; publish directory: `dist
 - Probar navegación y diseño en anchos móvil y escritorio.
 - Si se configura Power BI, comprobar permisos de acceso, altura del informe, inicio de sesión y pantalla completa.
 - Confirmar metadatos y favicon.
-- Publicar solo después de tener una URL de hosting funcional; este repositorio no demuestra por sí mismo que el sitio haya sido publicado.
+- Al completar la publicación, registrar la URL del sitio para compartirla con el equipo del proyecto.

@@ -5,10 +5,10 @@ export const project = {
   start: '16 oct 2026',
   end: '11 nov 2026',
   sensors: [
-    { name: 'Turbidez', unit: 'NTU', type: 'Variable física', icon: '◉', description: 'Describe la presencia de partículas que dispersan la luz en el agua. El proyecto registra el valor atribuido a esta variable para revisar su comportamiento temporal.', role: 'Observar cambios de turbidez y consultar mediciones históricas.', note: 'La documentación confirma la unidad NTU; no aporta marca, modelo, rango ni precisión del sensor.' },
-    { name: 'Sólidos disueltos (TDS)', unit: 'ppm', type: 'Variable física', icon: '⌁', description: 'Representa el valor reportado de sólidos disueltos totales. Es una medida distinta de la turbidez y debe interpretarse con su propia unidad y contexto.', role: 'Consultar variaciones en la concentración reportada de sólidos disueltos.', note: 'La documentación confirma ppm; no especifica modelo, rango ni método de calibración.' },
-    { name: 'Movimiento', unit: 'Estado', type: 'Evento', icon: '⌖', description: 'Indica detección o estado de movimiento; produce información de evento y no una medición fisicoquímica del agua.', role: 'Apoyar la supervisión de actividad o eventos asociados al dispositivo.', note: 'No se documentan marca, modelo, umbral ni definición de estados.' },
-    { name: 'Distancia ultrasónica', unit: 'cm', type: 'Medición indirecta', icon: '↕', description: 'Usa el tiempo de retorno de ondas sonoras para estimar una distancia. Puede aportar contexto de nivel o posición, según el montaje.', role: 'Registrar distancias en el tiempo para observar cambios de posición o nivel.', note: 'No mide directamente calidad del agua; no se reportan montaje, rango ni precisión.' },
+    { name: 'Turbidez', unit: 'NTU', type: 'Variable física', icon: '◉', description: 'La turbidez expresa la presencia de partículas que dispersan la luz en el agua. En SmartChia, sus registros permiten consultar los cambios en el tiempo.', role: 'Observar cambios de turbidez y consultar mediciones históricas.', note: 'La descripción técnica del sensor se puede ampliar con la ficha del dispositivo.' },
+    { name: 'Sólidos disueltos (TDS)', unit: 'ppm', type: 'Variable física', icon: '⌁', description: 'Los sólidos disueltos totales (TDS) expresan una característica distinta de la turbidez y se interpretan con su propia unidad y contexto.', role: 'Consultar variaciones en la concentración reportada de sólidos disueltos.', note: 'La ficha técnica del sensor puede completar la descripción de su rango y calibración.' },
+    { name: 'Movimiento', unit: 'Estado', type: 'Evento', icon: '⌖', description: 'Registra la detección o el estado de movimiento y aporta información sobre la actividad del dispositivo.', role: 'Apoyar la supervisión de actividad o eventos asociados al dispositivo.', note: 'La ficha técnica puede ampliar la marca, el modelo y la definición de estados.' },
+    { name: 'Distancia ultrasónica', unit: 'cm', type: 'Medición indirecta', icon: '↕', description: 'Estima la distancia a partir del tiempo de retorno de ondas ultrasónicas. Según el montaje, sirve como referencia de nivel o posición.', role: 'Registrar distancias en el tiempo para observar cambios de posición o nivel.', note: 'Aporta contexto sobre nivel o posición; la ficha técnica puede precisar el montaje y el rango de medición.' },
   ],
   concepts: [
     ['Ciudad inteligente', 'Uso coordinado de tecnologías y datos para comprender y gestionar sistemas urbanos. En SmartChia enmarca el monitoreo y el uso responsable de información ambiental.'],
@@ -16,14 +16,14 @@ export const project = {
     ['Big Data', 'Prácticas y tecnologías para almacenar, preparar y analizar conjuntos de datos de volumen, velocidad o variedad relevantes. SmartChia explora el volumen y la organización de mediciones.'],
     ['Internet de las cosas (IoT)', 'Red de objetos físicos conectados que capturan o intercambian datos. Los sensores de SmartChia son fuentes de mediciones o eventos.'],
     ['Sensores', 'Dispositivos que convierten una condición o evento en una señal registrable. Cada categoría de SmartChia tiene significado y unidad propios.'],
-    ['Calidad del agua', 'Conjunto de características físicas, químicas y biológicas del agua. Las variables documentadas son parciales y no bastan para certificar potabilidad ni emitir un diagnóstico oficial.'],
+    ['Calidad del agua', 'Conjunto de características físicas, químicas y biológicas del agua. SmartChia sigue algunas de estas variables para facilitar su observación y consulta.'],
     ['Base de datos relacional', 'Organiza información en tablas vinculadas por claves y reglas de integridad. smartchia1 registra dispositivos, sensores y mediciones.'],
     ['Data Warehouse', 'Almacén estructurado para consultas analíticas e históricas. El esquema dw del proyecto presenta una tabla de hechos y dimensiones.'],
     ['Modelo dimensional', 'Organización analítica que separa hechos medibles y dimensiones descriptivas para facilitar filtros y agregaciones.'],
-    ['ETL', 'Extracción, transformación y carga de datos desde fuentes operacionales hacia un destino analítico. En SmartChia, SSIS se documenta como diseño iniciado, no como proceso integral validado.'],
+    ['ETL', 'Extracción, transformación y carga de datos desde fuentes operacionales hacia un destino analítico. En SmartChia, SSIS es la herramienta elegida para conectar las fuentes con el almacén analítico.'],
     ['Business Intelligence', 'Métodos y herramientas para explorar datos mediante indicadores e informes que apoyan decisiones.'],
-    ['Power BI', 'Plataforma de Microsoft para modelar, visualizar y compartir análisis. Este sitio reserva un espacio para integrar el informe real cuando se configure su URL.'],
-    ['CRISP-DM', 'Proceso de minería de datos organizado en comprensión del negocio, comprensión de datos, preparación, modelado, evaluación y despliegue. El informe evidencia las primeras cinco fases con alcance académico.'],
+    ['Power BI', 'Plataforma de Microsoft para modelar, visualizar y compartir análisis. Este sitio ofrece un espacio listo para el informe de SmartChia.'],
+    ['CRISP-DM', 'Proceso de minería de datos organizado en comprensión del negocio, comprensión de datos, preparación, modelado, evaluación y despliegue. En SmartChia, las fases orientan el trabajo desde la comprensión del negocio hasta la evaluación de los datos.'],
   ] as const,
 }
 

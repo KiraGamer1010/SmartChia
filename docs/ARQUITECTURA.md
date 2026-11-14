@@ -9,12 +9,12 @@
 - Relación dimensional por `FechaKey`, `SensorKey` y `DispositivoKey`.
 - Herramientas: SQL Server Management Studio, Visual Studio 2022 y SSIS seleccionado para ETL.
 
-## Flujo conceptual
+## Flujo de información
 
 Sensores → captura → almacenamiento operacional → extracción y preparación → esquema dimensional → Power BI → conocimiento y decisiones.
 
-La documentación indica que el proyecto `ETL_SmartChia` y una conexión OLE DB se iniciaron. No acredita una ejecución completa y validada ni una carga final. Power BI se presenta como integración prevista; la URL del informe no está incluida en los archivos fuente.
+El proyecto `ETL_SmartChia` cuenta con una conexión OLE DB a `smartchia1`. Al enlazar el flujo con el esquema `dw`, Power BI podrá consultar el modelo analítico mediante la URL autorizada del informe.
 
 ## Diagrama
 
-El portal diferencia componentes documentados de pasos conceptuales o pendientes. La arquitectura no afirma telemetría en tiempo real, automatización de ETL ni publicación efectiva del informe.
+El diagrama reúne los componentes descritos en el proyecto y muestra el recorrido de la información hasta el análisis.

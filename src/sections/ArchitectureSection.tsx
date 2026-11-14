@@ -1,8 +1,20 @@
 import { Activity, ArrowRight, BarChart3, Database, GitBranch, Layers3, Radio } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 
+const stages = [
+  { icon: Radio, title: 'Sensores', detail: 'Cuatro categorías', status: 'Origen de datos', kind: 'known' },
+  { icon: Activity, title: 'Lecturas', detail: 'Mediciones y eventos', status: 'Registro temporal', kind: 'flow' },
+  { icon: Database, title: 'smartchia1', detail: 'Microsoft SQL Azure', status: 'Base operacional', kind: 'known' },
+  { icon: GitBranch, title: 'Integración ETL', detail: 'SSIS · conexión OLE DB', status: 'Conexión en preparación', kind: 'connection' },
+  { icon: Layers3, title: 'Esquema dw', detail: 'Hechos y dimensiones', status: 'Modelo analítico', kind: 'known' },
+  { icon: BarChart3, title: 'Power BI', detail: 'Análisis interactivo', status: 'Listo para conectar', kind: 'connection' },
+]
+
 export default function ArchitectureSection() {
-  return (
-    <section id="arquitectura" className="section section-navy"><SectionHeading eyebrow="03 / FLUJO DEL SISTEMA" title="De la captura a la decisión." text="La arquitectura combina elementos implementados y una ruta analítica conceptual. El diseño no implica que cada etapa esté automatizada."/><div className="legend"><span><i className="legend-solid"/> Componente documentado</span><span><i className="legend-dashed"/> Etapa conceptual o propuesta</span></div><div className="architecture-flow"><div className="flow-node"><Radio/><b>Sensores</b><small>4 categorías</small><em>documentado</em></div><ArrowRight className="flow-arrow"/><div className="flow-node"><Activity/><b>Captura</b><small>lecturas y eventos</small><em className="proposed">conceptual</em></div><ArrowRight className="flow-arrow"/><div className="flow-node"><Database/><b>smartchia1</b><small>Microsoft SQL Azure</small><em>documentado</em></div><ArrowRight className="flow-arrow"/><div className="flow-node proposed-node"><GitBranch/><b>Preparación</b><small>ETL · SSIS</small><em className="proposed">pendiente validar</em></div><ArrowRight className="flow-arrow"/><div className="flow-node"><Layers3/><b>Esquema dw</b><small>hechos + dimensiones</small><em>documentado</em></div><ArrowRight className="flow-arrow"/><div className="flow-node proposed-node"><BarChart3/><b>Power BI</b><small>informe analítico</small><em className="proposed">URL por configurar</em></div></div><div className="architecture-bottom"><div><span className="eyebrow">FLUJO DE INFORMACIÓN</span><p>Sensores producen lecturas → el modelo operacional las organiza → preparación ETL proyectada integra la información → el esquema dimensional permite consultas por fecha, sensor y dispositivo → visualizaciones apoyan la generación de conocimiento.</p></div><div className="status-box"><span className="status-icon"><GitBranch size={19}/></span><div><b>Estado de integración</b><p>El proyecto SSIS y la conexión OLE DB se iniciaron. La ejecución integral y carga definitiva no están acreditadas.</p></div></div></div></section>
-  )
+  return <section id="arquitectura" className="section section-navy">
+    <SectionHeading eyebrow="03 / FLUJO DEL SISTEMA" title="De las lecturas al análisis." text="El flujo muestra cómo se organizan las mediciones y cómo pueden explorarse por fecha, sensor y dispositivo."/>
+    <div className="legend"><span><i className="legend-solid"/> Elementos descritos en el proyecto</span><span><i className="legend-dashed"/> Conexiones para el análisis</span></div>
+    <div className="architecture-flow">{stages.map(({ icon: Icon, title, detail, status, kind }, i) => <div className="flow-segment" key={title}><div className={`flow-node ${kind === 'connection' ? 'proposed-node' : ''}`}><Icon/><span className="flow-index">0{i + 1}</span><b>{title}</b><small>{detail}</small><em className={kind === 'connection' ? 'proposed' : ''}>{status}</em></div>{i < stages.length - 1 && <ArrowRight className="flow-arrow" aria-hidden="true"/>}</div>)}</div>
+    <div className="architecture-bottom"><div><span className="eyebrow">CÓMO SE RELACIONAN LAS ETAPAS</span><p>Las lecturas se organizan en la base operacional. La integración ETL enlaza esa información con el modelo dimensional; desde allí, Power BI podrá ofrecer consultas y comparaciones.</p></div><div className="status-box"><span className="status-icon"><GitBranch size={19}/></span><div><b>Conexión de datos</b><p>El proyecto cuenta con una conexión OLE DB de partida. Al enlazar y validar el flujo completo, el Data Warehouse podrá recibir las mediciones.</p></div></div></div>
+  </section>
 }

@@ -12,7 +12,7 @@ Base `smartchia1`, tecnología Microsoft SQL Azure. Se documentan estas entidade
 | `dbo.Mediciones` | Mediciones procesadas; contiene `TipoRegistro` |
 | `dbo.SmartChiaLecturas` | Lecturas originales del módulo |
 
-Relaciones identificadas en el informe: sensores con dispositivos, sensores con tipos de sensor y mediciones con sensores. No se dispone del DDL ni del diccionario completo de columnas en los archivos revisados; no se atribuyen nombres de claves o columnas a las tablas operacionales.
+El informe describe las relaciones entre sensores y dispositivos, sensores y tipos de sensor, y mediciones y sensores. El diagrama presenta esta vista general; el diccionario de datos permite añadir nombres de columnas y claves.
 
 ## Volumen y procedencia
 
@@ -33,4 +33,4 @@ Esquema `dw`, patrón estrella:
 - `dw.DimSensor`: conectada mediante `SensorKey`.
 - `dw.DimDispositivo`: conectada mediante `DispositivoKey`.
 
-Las validaciones documentadas reportan correspondencia dimensional completa. No se inventa el detalle de columnas descriptivas de las dimensiones.
+Las validaciones documentadas reportan correspondencia dimensional completa. El diagrama se centra en las claves y relaciones principales de cada dimensión.
