@@ -1,0 +1,8 @@
+import { ArrowDown } from 'lucide-react'
+import SectionHeading from '../components/SectionHeading'
+
+export default function EtlSection() {
+  return (
+    <section id="etl" className="section section-white"><SectionHeading eyebrow="05 / PREPARACIÓN DE DATOS" title="El ETL, con su estado real." text="La extracción, transformación y carga forman la ruta prevista desde la base operacional hasta el Data Warehouse."/><div className="etl-steps">{[['01', 'Extract', 'Extracción', 'Obtener registros desde dbo.Mediciones y las fuentes documentadas.', 'Diseño descrito'], ['02', 'Transform', 'Transformación', 'Validar estructura, tipos de columnas y preparar los datos para integrarlos.', 'Configuración iniciada'], ['03', 'Load', 'Carga', 'Cargar el resultado preparado en dw.FactMediciones y sus dimensiones.', 'Pendiente validar']].map((x, i) => <article className="etl-step" key={x[0]}><div className="etl-number">{x[0]}</div><div className="etl-copy"><span>ETAPA {x[0]}</span><h3>{x[1]}</h3><h4>{x[2]}</h4><p>{x[3]}</p><small className={i === 2 ? 'pending' : ''}>{x[4]}</small></div><ArrowDown className="etl-arrow"/></article>)}</div><div className="etl-footer"><div><b>Herramientas documentadas</b><p>SQL Server · SQL Server Management Studio · Visual Studio 2022 · SQL Server Integration Services (SSIS)</p></div><div className="warning-note"><span>!</span><p>Se creó ETL_SmartChia y se configuró una conexión OLE DB. El informe declara que el paquete no alcanzó una ejecución completa y validada; por eso este sitio no presenta resultados de carga como comprobados.</p></div></div></section>
+  )
+}
