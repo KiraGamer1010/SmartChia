@@ -82,3 +82,7 @@ La salida se genera en `dist/`.
 El proyecto está preparado para Vercel y Netlify. Conecta el repositorio, instala dependencias con `npm install` y usa `npm run build`; la carpeta de salida es `dist`. Configura `VITE_POWERBI_EMBED_URL` en el panel de variables del proveedor antes de compilar. Vercel usa `vercel.json`; Netlify usa `public/_redirects` para rutas SPA.
 
 Consulta [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md).
+
+## API de Azure SQL
+
+El backend independiente de solo lectura está en `api-server/`. Para configurarlo y desplegarlo como Web Service en Render, consulta [api-server/README.md](api-server/README.md). Sus credenciales se configuran únicamente en el entorno privado del servicio y no se exponen al frontend.
